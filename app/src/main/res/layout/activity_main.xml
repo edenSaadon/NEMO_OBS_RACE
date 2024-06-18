@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- רקע -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/nemo_IMG_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sea" />
+
+    <!-- לבבות -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/hearts_life"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="11dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart1"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/heart" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart2"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginHorizontal="8dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/heart" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart3"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/heart" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- כפתורים לתזוזה -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/button_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/main_BTN_left"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="@color/red"
+            android:contentDescription="Left Button"
+            app:cornerRadius="35dp"
+            android:gravity="center"
+            android:icon="@drawable/left_btn"
+            app:iconGravity="top"
+            app:iconSize="42dp"/>
+
+        <!-- מרווח בלתי נראה בין הכפתורים -->
+        <View
+            android:layout_width="140dp"
+            android:layout_height="0dp"
+            android:visibility="invisible" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/main_BTN_right"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/red"
+            app:cornerRadius="35dp"
+            android:gravity="center"
+            android:contentDescription="Right Button"
+            android:icon="@drawable/right_btn"
+            app:iconGravity="top"
+            app:iconSize="42dp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- השחקן -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/player"
+        android:layout_width="79dp"
+        android:layout_height="79dp"
+        android:layout_above="@id/button_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:src="@drawable/nemo" />
+
+    <!-- מכשול עליון -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/obstacle_top"
+        android:layout_width="82dp"
+        android:layout_height="74dp"
+        android:layout_below="@id/hearts_life"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="80dp"
+        android:src="@drawable/shark" />
+
+    <!-- מכשול תחתון -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/obstacle_bottom"
+        android:layout_width="82dp"
+        android:layout_height="74dp"
+        android:layout_above="@id/player"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="134dp"
+        android:src="@drawable/shark" />
+
+</RelativeLayout>
