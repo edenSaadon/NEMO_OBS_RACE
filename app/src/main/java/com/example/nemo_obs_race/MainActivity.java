@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         player = findViewById(R.id.player);
         obstacle_bottom = findViewById(R.id.obstacle_bottom);
         obstacle_top = findViewById(R.id.obstacle_top);
+        button_layout = findViewById(R.id.button_layout);
+        hearts_life = findViewById(R.id.hearts_life);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE); // Initialize the vibrator
     }
 
@@ -123,16 +124,19 @@ public class MainActivity extends AppCompatActivity {
         obstacle_top.setY(obstacle_top.getY() + 100); // Move down
         obstacle_bottom.setY(obstacle_bottom.getY() + 100); // Move down
 
-        if (obstacle_top.getY() > findViewById(R.id.main).getHeight()) {
-            resetObstaclePosition(obstacle_top);
+        int buttonY = button_layout.getTop();
+        int heartsY = hearts_life.getBottom();
+
+        if (obstacle_top.getY() > buttonY - obstacle_top.getHeight()) {
+            resetObstaclePosition(obstacle_top, heartsY);
         }
-        if (obstacle_bottom.getY() > findViewById(R.id.main).getHeight()) {
-            resetObstaclePosition(obstacle_bottom);
+        if (obstacle_bottom.getY() > buttonY - obstacle_bottom.getHeight()) {
+            resetObstaclePosition(obstacle_bottom, heartsY);
         }
     }
 
-    private void resetObstaclePosition(AppCompatImageView obstacle) {
-        obstacle.setY(-obstacle.getHeight());
+    private void resetObstaclePosition(AppCompatImageView obstacle, int heartsY) {
+        obstacle.setY(heartsY + 20); // Set just below the hearts
         obstacle.setX((float) (Math.random() * (findViewById(R.id.main).getWidth() - obstacle.getWidth())));
     }
 
