@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
+import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkCollision() {
         if (checkOverlap(player, obstacle_top) || checkOverlap(player, obstacle_bottom)) {
             vibrate();
+            showToastMessage("Collision detected!");
             gameManager.decreaseLives();
             updateHearts();
             if (gameManager.isGameEnded()) {
@@ -151,6 +153,10 @@ public class MainActivity extends AppCompatActivity {
         if (vibrator != null) {
             vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
         }
+    }
+
+    private void showToastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private boolean checkOverlap(View view1, View view2) {
