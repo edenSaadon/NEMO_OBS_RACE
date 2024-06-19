@@ -1,7 +1,6 @@
 package com.example.nemo_obs_race;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
@@ -19,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     private AppCompatImageView nemo_IMG_background;
     private LinearLayoutCompat hearts_life;
-    private AppCompatImageView main_IMG_heart1;
-    private AppCompatImageView main_IMG_heart2;
-    private AppCompatImageView main_IMG_heart3;
     private MaterialButton main_BTN_left;
     private MaterialButton main_BTN_right;
     private LinearLayoutCompat button_layout;
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private GameManager gameManager;
     private Vibrator vibrator;
 
-    private AppCompatImageView[] main_IMG_hearts = new AppCompatImageView[3];
+    private final AppCompatImageView[] main_IMG_hearts = new AppCompatImageView[3];
     private int playerPosition = 1; // 0: left, 1: center, 2: right
     private final Handler handler = new Handler();
     private Runnable runnable;
@@ -94,13 +90,13 @@ public class MainActivity extends AppCompatActivity {
         int screenWidth = findViewById(R.id.main).getWidth();
         switch (playerPosition) {
             case 0:
-                translationX = -(screenWidth / 3); // Move to the left third
+                translationX = -((float) (screenWidth / 3)); // Move to the left third
                 break;
             case 1:
                 translationX = 0; // Center position
                 break;
             case 2:
-                translationX = screenWidth / 3; // Move to the right third
+                translationX = (float)(screenWidth / 3); // Move to the right third
                 break;
         }
         player.setTranslationX(translationX);
@@ -153,11 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void vibrate() {
         if (vibrator != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                vibrator.vibrate(500);
-            }
+            vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
         }
     }
 
