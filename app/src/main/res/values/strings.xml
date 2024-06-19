@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NEMO_OBS_RACE</string>
+    <string name="left_button">Left Button</string>
+    <string name="right_button">right</string>
 </resources>

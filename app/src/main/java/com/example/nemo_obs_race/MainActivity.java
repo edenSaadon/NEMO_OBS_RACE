@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkCollision() {
         if (checkOverlap(player, obstacle_top) || checkOverlap(player, obstacle_bottom)) {
             vibrate();
-            showToastMessage("Collision detected!");
+            showToastMessage();
             gameManager.decreaseLives();
             updateHearts();
             if (gameManager.isGameEnded()) {
@@ -155,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void showToastMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    private void showToastMessage() {
+        Toast.makeText(this, "Collision detected!", Toast.LENGTH_SHORT).show();
     }
 
     private boolean checkOverlap(View view1, View view2) {
