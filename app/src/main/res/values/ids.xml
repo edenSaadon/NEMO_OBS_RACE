@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="nemo_IMG_background" type="id"/>
+    <item name="main" type="id"/>
+    <item name="left_column" type="id"/>
+    <item name="center_column" type="id"/>
+    <item name="right_column" type="id"/>
+    <item name="hearts_life" type="id"/>
+    <item name="main_IMG_heart1" type="id"/>
+    <item name="main_IMG_heart2" type="id"/>
+    <item name="main_IMG_heart3" type="id"/>
+    <item name="button_layout" type="id"/>
+    <item name="main_BTN_left" type="id"/>
+    <item name="player" type="id"/>
+    <item name="obstacle_top" type="id"/>
+    <item name="obstacle_bottom" type="id"/>
+    <item name="main_BTN_right" type="id"/>
+    <item name="columns_layout" type="id"/>
+</resources>

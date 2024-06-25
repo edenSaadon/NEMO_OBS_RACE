@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -90,6 +89,41 @@
             app:iconGravity="top"
             app:iconSize="42dp"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- פריסה אופקית ליצירת 3 עמודות לשחקן ולמכשולים -->
+    <LinearLayout
+        android:id="@+id/columns_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_above="@id/button_layout"
+        android:layout_below="@id/hearts_life">
+
+        <!-- עמודה שמאלית -->
+        <LinearLayout
+            android:id="@+id/left_column"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" />
+
+        <!-- עמודה מרכזית -->
+        <LinearLayout
+            android:id="@+id/center_column"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" />
+
+        <!-- עמודה ימנית -->
+        <LinearLayout
+            android:id="@+id/right_column"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" />
+
+    </LinearLayout>
 
     <!-- השחקן -->
     <androidx.appcompat.widget.AppCompatImageView
