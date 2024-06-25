@@ -1,4 +1,3 @@
-
 package com.example.nemo_obs_race;
 
 import android.content.Context;
@@ -26,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private Vibrator vibrator;
 
     private final AppCompatImageView[] main_IMG_hearts = new AppCompatImageView[3];
+    private AppCompatImageView player_left;
+    private AppCompatImageView player_center;
+    private AppCompatImageView player_right;
     private final Handler handler = new Handler();
     private Runnable runnable;
 
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.main_Middle_line),
                 findViewById(R.id.main_Right_line)
         };
+        player_left = findViewById(R.id.player_left);
+        player_center = findViewById(R.id.player_center);
+        player_right = findViewById(R.id.player_right);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE); // Initialize the vibrator
     }
 
@@ -70,17 +75,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void moveLeft() {
-        gameManager.moveNLeft();
-        updateUI();
+        if (gameManager.getNemoCol() > 0) {
+            gameManager.moveNLeft();
+            updatePlayerPosition();
+        }
     }
 
     private void moveRight() {
-        gameManager.moveNRight();
-        updateUI();
+        if (gameManager.getNemoCol() < 2) {
+            gameManager.moveNRight();
+            updatePlayerPosition();
+        }
+    }
+
+    private void updatePlayerPosition() {
+        player_left.setVisibility(View.INVISIBLE);
+        player_center.setVisibility(View.INVISIBLE);
+        player_right.setVisibility(View.INVISIBLE);
+
+        switch (gameManager.getNemoCol()) {
+            case 0:
+                player_left.setVisibility(View.VISIBLE);
+                break;
+            case 1:
+                player_center.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                player_right.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 
     private void startGame() {
-        updateUI();
+        updatePlayerPosition();
         runnable = new Runnable() {
             @Override
             public void run() {
