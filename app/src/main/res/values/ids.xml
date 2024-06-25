@@ -11,12 +11,14 @@
     <item name="main_IMG_heart3" type="id"/>
     <item name="button_layout" type="id"/>
     <item name="main_BTN_left" type="id"/>
-    <item name="player" type="id"/>
-    <item name="obstacle_top" type="id"/>
-    <item name="obstacle_bottom" type="id"/>
     <item name="main_BTN_right" type="id"/>
-    <item name="columns_layout" type="id"/>
     <item name="player_left" type="id"/>
     <item name="player_center" type="id"/>
     <item name="player_right" type="id"/>
+    <item name="obstacle_top" type="id"/>
+    <item name="obstacle_bottom" type="id"/>
+    <item name="columns_layout" type="id"/>
+    <item name="main_Left_line" type="id"/>
+    <item name="main_Middle_line" type="id"/>
+    <item name="main_Right_line" type="id"/>
 </resources>

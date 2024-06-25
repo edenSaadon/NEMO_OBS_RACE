@@ -1,3 +1,4 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -100,24 +101,24 @@
         android:layout_below="@id/hearts_life">
 
         <!-- עמודה שמאלית -->
-        <LinearLayout
-            android:id="@+id/left_column"
+        <FrameLayout
+            android:id="@+id/main_Left_line"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical" />
 
         <!-- עמודה מרכזית -->
-        <LinearLayout
-            android:id="@+id/center_column"
+        <FrameLayout
+            android:id="@+id/main_Middle_line"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical" />
 
         <!-- עמודה ימנית -->
-        <LinearLayout
-            android:id="@+id/right_column"
+        <FrameLayout
+            android:id="@+id/main_Right_line"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -154,25 +155,4 @@
         android:layout_marginBottom="11dp"
         android:src="@drawable/nemo"
         android:visibility="invisible" />
-
-    <!-- מכשול עליון -->
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/obstacle_top"
-        android:layout_width="82dp"
-        android:layout_height="74dp"
-        android:layout_below="@id/hearts_life"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="94dp"
-        android:src="@drawable/shark" />
-
-    <!-- מכשול תחתון -->
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/obstacle_bottom"
-        android:layout_width="82dp"
-        android:layout_height="74dp"
-        android:layout_above="@id/player_center"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="134dp"
-        android:src="@drawable/shark" />
-
 </RelativeLayout>

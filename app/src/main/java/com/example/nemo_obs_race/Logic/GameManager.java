@@ -1,7 +1,7 @@
+
 package com.example.nemo_obs_race.Logic;
 
 import android.util.Log;
-
 import java.util.Arrays;
 import java.util.Random;
 
