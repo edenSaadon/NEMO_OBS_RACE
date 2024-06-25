@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- רקע -->
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/nemo_IMG_background"
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/sea" />
 
-    <!-- לבבות -->
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/hearts_life"
         android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             android:src="@drawable/heart" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <!-- כפתורים לתזוזה -->
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/button_layout"
         android:layout_width="wrap_content"
@@ -72,7 +72,6 @@
             app:iconGravity="top"
             app:iconSize="42dp"/>
 
-        <!-- מרווח בלתי נראה בין הכפתורים -->
         <View
             android:layout_width="140dp"
             android:layout_height="0dp"
@@ -91,7 +90,6 @@
             app:iconSize="42dp"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <!-- פריסה אופקית ליצירת 3 עמודות לשחקן ולמכשולים -->
     <LinearLayout
         android:id="@+id/columns_layout"
         android:layout_width="match_parent"
@@ -100,7 +98,6 @@
         android:layout_above="@id/button_layout"
         android:layout_below="@id/hearts_life">
 
-        <!-- עמודה שמאלית -->
         <FrameLayout
             android:id="@+id/main_Left_line"
             android:layout_width="0dp"
@@ -108,7 +105,6 @@
             android:layout_weight="1"
             android:orientation="vertical" />
 
-        <!-- עמודה מרכזית -->
         <FrameLayout
             android:id="@+id/main_Middle_line"
             android:layout_width="0dp"
@@ -116,7 +112,6 @@
             android:layout_weight="1"
             android:orientation="vertical" />
 
-        <!-- עמודה ימנית -->
         <FrameLayout
             android:id="@+id/main_Right_line"
             android:layout_width="0dp"
@@ -126,7 +121,6 @@
 
     </LinearLayout>
 
-    <!-- השחקן בשתי עמדות -->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/player_left"
         android:layout_width="79dp"

@@ -36,17 +36,17 @@ public class GameManager {
 
     public void moveNLeft() {
         if (NemoCol > 0) {
-            moveSpaceship(NemoCol - 1);
+            moveNemo(NemoCol - 1);
         }
     }
 
     public void moveNRight() {
         if (NemoCol < GRID_COLS - 1) {
-            moveSpaceship(NemoCol + 1);
+            moveNemo(NemoCol + 1);
         }
     }
 
-    private void moveSpaceship(int newCol) {
+    private void moveNemo(int newCol) {
         grid[NemoRow][NemoCol] = EMPTY;
         NemoCol = newCol;
         grid[NemoRow][NemoCol] = NEMO;
