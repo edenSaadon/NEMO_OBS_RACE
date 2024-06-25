@@ -17,7 +17,7 @@ The Nemo Obstacle Race Game is a fun and engaging mobile game where the player c
 3. The game ends when all three lives are lost.
 
 ## Screenshot
-![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/b8a245b0-6cc0-40fa-adba-a3d9653a3782)
+![Screenshot_20240625_104131](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/fe8f4025-9f69-48b3-a7ea-70ae26a2d63f)
 
 ## Code Structure
 - **MainActivity.java**: The main activity where the game logic is implemented.
