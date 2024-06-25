@@ -125,9 +125,19 @@
 
     </LinearLayout>
 
-    <!-- השחקן -->
+    <!-- השחקן בשתי עמדות -->
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/player"
+        android:id="@+id/player_left"
+        android:layout_width="79dp"
+        android:layout_height="79dp"
+        android:layout_above="@id/button_layout"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="11dp"
+        android:src="@drawable/nemo"
+        android:visibility="invisible" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/player_center"
         android:layout_width="79dp"
         android:layout_height="79dp"
         android:layout_above="@id/button_layout"
@@ -135,15 +145,24 @@
         android:layout_marginBottom="11dp"
         android:src="@drawable/nemo" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/player_right"
+        android:layout_width="79dp"
+        android:layout_height="79dp"
+        android:layout_above="@id/button_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="11dp"
+        android:src="@drawable/nemo"
+        android:visibility="invisible" />
+
     <!-- מכשול עליון -->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/obstacle_top"
         android:layout_width="82dp"
         android:layout_height="74dp"
         android:layout_below="@id/hearts_life"
-        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="94dp"
-        android:layout_marginEnd="80dp"
         android:src="@drawable/shark" />
 
     <!-- מכשול תחתון -->
@@ -151,9 +170,8 @@
         android:id="@+id/obstacle_bottom"
         android:layout_width="82dp"
         android:layout_height="74dp"
-        android:layout_above="@id/player"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="75dp"
+        android:layout_above="@id/player_center"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="134dp"
         android:src="@drawable/shark" />
 

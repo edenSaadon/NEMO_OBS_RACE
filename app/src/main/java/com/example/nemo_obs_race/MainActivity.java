@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import com.bumptech.glide.Glide;
 import com.example.nemo_obs_race.Logic.GameManager;
 import com.google.android.material.button.MaterialButton;
@@ -19,13 +18,12 @@ import com.google.android.material.button.MaterialButton;
 public class MainActivity extends AppCompatActivity {
 
     private AppCompatImageView nemo_IMG_background;
-    private LinearLayoutCompat hearts_life;
     private MaterialButton main_BTN_left;
     private MaterialButton main_BTN_right;
-    private LinearLayoutCompat button_layout;
-    private AppCompatImageView player;
-    private AppCompatImageView obstacle_top;
-    private AppCompatImageView obstacle_bottom;
+    private AppCompatImageView player_left;
+    private AppCompatImageView player_center;
+    private AppCompatImageView player_right;
+    private AppCompatImageView[] obstacles;
     private GameManager gameManager;
     private Vibrator vibrator;
 
@@ -42,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         findViews();
         initViews();
         setupButtons();
+        gameManager = new GameManager(3); // Initialize gameManager with 3 lives
         startGame();
     }
 
@@ -52,11 +51,13 @@ public class MainActivity extends AppCompatActivity {
         main_IMG_hearts[0] = findViewById(R.id.main_IMG_heart1);
         main_IMG_hearts[1] = findViewById(R.id.main_IMG_heart2);
         main_IMG_hearts[2] = findViewById(R.id.main_IMG_heart3);
-        player = findViewById(R.id.player);
-        obstacle_bottom = findViewById(R.id.obstacle_bottom);
-        obstacle_top = findViewById(R.id.obstacle_top);
-        button_layout = findViewById(R.id.button_layout);
-        hearts_life = findViewById(R.id.hearts_life);
+        player_left = findViewById(R.id.player_left);
+        player_center = findViewById(R.id.player_center);
+        player_right = findViewById(R.id.player_right);
+        obstacles = new AppCompatImageView[]{
+                findViewById(R.id.obstacle_top),
+                findViewById(R.id.obstacle_bottom)
+        };
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE); // Initialize the vibrator
     }
 
@@ -88,20 +89,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updatePlayerPosition() {
-        float translationX = 0;
-        int screenWidth = findViewById(R.id.main).getWidth();
+        player_left.setVisibility(View.INVISIBLE);
+        player_center.setVisibility(View.INVISIBLE);
+        player_right.setVisibility(View.INVISIBLE);
+
         switch (playerPosition) {
             case 0:
-                translationX = -((float) (screenWidth / 3)); // Move to the left third
+                player_left.setVisibility(View.VISIBLE);
                 break;
             case 1:
-                translationX = 0; // Center position
+                player_center.setVisibility(View.VISIBLE);
                 break;
             case 2:
-                translationX = (float)(screenWidth / 3); // Move to the right third
+                player_right.setVisibility(View.VISIBLE);
                 break;
         }
-        player.setTranslationX(translationX);
     }
 
     private void startGame() {
@@ -110,44 +112,103 @@ public class MainActivity extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                moveObstacles();
-                checkCollision();
-                handler.postDelayed(this, 1000); // Move obstacles every second
+                if (!gameManager.isGameEnded()) {
+                    moveObstacles();
+                    checkCollision();
+                    handler.postDelayed(this, 500); // Move obstacles every 500ms
+                }
             }
         };
         handler.post(runnable);
     }
 
     private void moveObstacles() {
-        obstacle_top.setY(obstacle_top.getY() + 100); // Move down
-        obstacle_bottom.setY(obstacle_bottom.getY() + 100); // Move down
-
-        int buttonY = button_layout.getTop();
-        int heartsY = hearts_life.getBottom();
-
-        if (obstacle_top.getY() > buttonY - obstacle_top.getHeight()) {
-            resetObstaclePosition(obstacle_top, heartsY);
+        for (AppCompatImageView obstacle : obstacles) {
+            obstacle.setY(obstacle.getY() + 100); // Move down
+            if (obstacle.getY() > findViewById(R.id.main).getHeight()) {
+                resetObstaclePosition(obstacle);
+            }
         }
-        if (obstacle_bottom.getY() > buttonY - obstacle_bottom.getHeight()) {
-            resetObstaclePosition(obstacle_bottom, heartsY);
+        refreshUI();
+    }
+
+    private void refreshUI() {
+        updatePlayerPosition();
+        updateObstaclesPosition();
+        updateHearts();
+    }
+
+    private void updateObstaclesPosition() {
+        int[][] grid = gameManager.getGrid();
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[row].length; col++) {
+                if (grid[row][col] == GameManager.OBSTACLES) {
+                    positionViewInLane(obstacles[row], col, row);
+                }
+            }
         }
     }
 
-    private void resetObstaclePosition(AppCompatImageView obstacle, int heartsY) {
-        obstacle.setY(heartsY + 20); // Set just below the hearts
+    private void positionViewInLane(View view, int lane, int row) {
+        int laneWidth = findViewById(R.id.main).getWidth() / GameManager.GRID_COLS;
+        view.setX(lane * laneWidth);
+        int heartBottom = findViewById(R.id.hearts_life).getBottom();
+        view.setY(heartBottom + (float) (row * (findViewById(R.id.main).getHeight() - heartBottom)) / GameManager.GRID_ROWS);
+    }
+
+    private void resetObstaclePosition(AppCompatImageView obstacle) {
+        int heartBottom = findViewById(R.id.hearts_life).getBottom();
+        obstacle.setY(heartBottom); // Set just below the hearts
         obstacle.setX((float) (Math.random() * (findViewById(R.id.main).getWidth() - obstacle.getWidth())));
     }
 
     private void checkCollision() {
-        if (checkOverlap(player, obstacle_top) || checkOverlap(player, obstacle_bottom)) {
-            vibrate();
-            showToastMessage();
-            gameManager.decreaseLives();
-            updateHearts();
-            if (gameManager.isGameEnded()) {
-                endGame();
+        AppCompatImageView currentPlayerView = null;
+        switch (playerPosition) {
+            case 0:
+                currentPlayerView = player_left;
+                break;
+            case 1:
+                currentPlayerView = player_center;
+                break;
+            case 2:
+                currentPlayerView = player_right;
+                break;
+        }
+
+        if (currentPlayerView != null) {
+            for (AppCompatImageView obstacle : obstacles) {
+                if (checkOverlap(currentPlayerView, obstacle)) {
+                    vibrate();
+                    showToastMessage();
+                    gameManager.decreaseLives();
+                    updateHearts();
+                    if (gameManager.isGameEnded()) {
+                        endGame();
+                    }
+                    resetObstaclePosition(obstacle); // Reset position of the obstacle after collision
+                }
             }
         }
+    }
+
+    private boolean checkOverlap(View view1, View view2) {
+        int[] location1 = new int[2];
+        int[] location2 = new int[2];
+        view1.getLocationOnScreen(location1);
+        view2.getLocationOnScreen(location2);
+
+        int view1Left = location1[0];
+        int view1Right = location1[0] + view1.getWidth();
+        int view1Top = location1[1];
+        int view1Bottom = location1[1] + view1.getHeight();
+
+        int view2Left = location2[0];
+        int view2Right = location2[0] + view2.getWidth();
+        int view2Top = location2[1];
+        int view2Bottom = location2[1] + view2.getHeight();
+
+        return view1Right >= view2Left && view1Left <= view2Right && view1Bottom >= view2Top && view1Top <= view2Bottom;
     }
 
     private void vibrate() {
@@ -160,21 +221,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Collision detected!", Toast.LENGTH_SHORT).show();
     }
 
-    private boolean checkOverlap(View view1, View view2) {
-        int[] location1 = new int[2];
-        int[] location2 = new int[2];
-        view1.getLocationOnScreen(location1);
-        view2.getLocationOnScreen(location2);
-
-        return location1[0] < location2[0] + view2.getWidth() &&
-                location1[0] + view1.getWidth() > location2[0] &&
-                location1[1] < location2[1] + view2.getHeight() &&
-                location1[1] + view1.getHeight() > location2[1];
-    }
-
     private void updateHearts() {
         for (int i = 0; i < main_IMG_hearts.length; i++) {
-            if (i < gameManager.getLifeCount()) {
+            if (i < gameManager.getLives()) {
                 main_IMG_hearts[i].setVisibility(View.VISIBLE);
             } else {
                 main_IMG_hearts[i].setVisibility(View.INVISIBLE);
@@ -186,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
         handler.removeCallbacks(runnable);
         showGameOverDialog();
     }
+
 
     private void showGameOverDialog() {
         new AlertDialog.Builder(this)
