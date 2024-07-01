@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background ImageView -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/background_image" />
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEMO RACE"
+        android:textColor="@android:color/black"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <!-- Center Box for Options -->
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="20dp"
+        android:layout_below="@id/title_text"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:elevation="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose One Option:"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal" />
+
+        <RadioGroup
+            android:id="@+id/movement_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp">
+
+            <RadioButton
+                android:id="@+id/radio_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buttons"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_sensors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sensors"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_high_scores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Scores"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_blue_light"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</RelativeLayout>

@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SensorActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/nemo_IMG_background"
@@ -46,52 +46,11 @@
             android:src="@drawable/heart" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/button_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/main_BTN_left"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginEnd="50dp"
-            android:backgroundTint="@color/red"
-            android:contentDescription="@string/left_button"
-            app:cornerRadius="35dp"
-            android:gravity="center"
-            app:icon="@drawable/left_btn"
-            app:iconGravity="top"
-            app:iconSize="42dp"/>
-
-        <View
-            android:layout_width="140dp"
-            android:layout_height="0dp"
-            android:visibility="invisible" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/main_BTN_right"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:backgroundTint="@color/red"
-            android:contentDescription="@string/right_button"
-            app:cornerRadius="35dp"
-            android:gravity="center"
-            app:icon="@drawable/right_btn"
-            app:iconGravity="top"
-            app:iconSize="42dp"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
     <LinearLayout
         android:id="@+id/columns_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_above="@id/button_layout"
         android:layout_below="@id/hearts_life">
 
         <FrameLayout
@@ -128,16 +87,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical" />
-
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/player_left"
         android:layout_width="79dp"
         android:layout_height="79dp"
-        android:layout_above="@id/button_layout"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="11dp"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/nemo"
         android:visibility="invisible" />
 
@@ -145,7 +103,7 @@
         android:id="@+id/player_middle_left"
         android:layout_width="79dp"
         android:layout_height="79dp"
-        android:layout_above="@id/button_layout"
+        android:layout_alignParentBottom="true"
         android:layout_toEndOf="@id/player_left"
         android:layout_marginBottom="11dp"
         android:src="@drawable/nemo"
@@ -155,8 +113,8 @@
         android:id="@+id/player_center"
         android:layout_width="79dp"
         android:layout_height="79dp"
-        android:layout_above="@id/button_layout"
         android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="11dp"
         android:src="@drawable/nemo" />
 
@@ -164,7 +122,7 @@
         android:id="@+id/player_middle_right"
         android:layout_width="79dp"
         android:layout_height="79dp"
-        android:layout_above="@id/button_layout"
+        android:layout_alignParentBottom="true"
         android:layout_toStartOf="@id/player_right"
         android:layout_marginBottom="11dp"
         android:src="@drawable/nemo"
@@ -174,21 +132,11 @@
         android:id="@+id/player_right"
         android:layout_width="79dp"
         android:layout_height="79dp"
-        android:layout_above="@id/button_layout"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="11dp"
         android:src="@drawable/nemo"
         android:visibility="invisible" />
-
-    <!-- Coin Image -->
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/coin_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/star"
-        android:visibility="gone" />
 
     <TextView
         android:id="@+id/score_text"

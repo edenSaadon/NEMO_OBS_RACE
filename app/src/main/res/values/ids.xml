@@ -21,4 +21,31 @@
     <item name="main_Left_line" type="id"/>
     <item name="main_Middle_line" type="id"/>
     <item name="main_Right_line" type="id"/>
+    <item name="coin_image" type="id"/>
+    <item name="main_TXT_score" type="id"/>
+    <item name="score_text" type="id"/>
+    <item name="sensors_layout" type="id"/>
+    <item name="buttons_layout" type="id"/>
+    <item name="radio_sensors" type="id"/>
+    <item name="radio_high_scores" type="id"/>
+    <item name="radio_buttons" type="id"/>
+    <item name="movement_options" type="id"/>
+    <item name="menu_layout" type="id"/>
+    <item name="confirm_button" type="id"/>
+    <item name="high_scores_table" type="id"/>
+    <item name="dolphinImg" type="id"/>
+    <item name="highScoresTitle" type="id"/>
+    <item name="highScoresCard" type="id"/>
+    <item name="button_background" type="id"/>
+    <item name="backgroundImage" type="id"/>
+    <item name="highScoresTable" type="id"/>
+    <item name="player_middle_right" type="id"/>
+    <item name="player_middle_left" type="id"/>
+    <item name="main_Middle_right_line" type="id"/>
+    <item name="main_Center_line" type="id"/>
+    <item name="main_Middle_left_line" type="id"/>
+    <item name="main_MiddleRight_line" type="id"/>
+    <item name="main_MiddleLeft_line" type="id"/>
+    <item name="bestScore" type="id"/>
+
 </resources>

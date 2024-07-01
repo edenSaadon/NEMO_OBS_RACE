@@ -1,17 +1,18 @@
-
 package com.example.nemo_obs_race.Logic;
 
 import android.util.Log;
+
 import java.util.Arrays;
 import java.util.Random;
 
 public class GameManager {
     public static final int GRID_ROWS = 10;
-    public static final int GRID_COLS = 3;
+    public static final int GRID_COLS = 5; // עדכון ל-5 עמודות
     public static final int EMPTY = 0;
     public static final int NEMO = 1;
     public static final int OBSTACLES = 2;
-
+    public static final int COIN = 3;
+    private int score;
     private final int[][] grid;
     private final int NemoRow;
     private int NemoCol;
@@ -21,8 +22,9 @@ public class GameManager {
     public GameManager(int lives) {
         this.lives = lives;
         this.NemoRow = GRID_ROWS - 1;
-        this.NemoCol = 1;
+        this.NemoCol = 2; // עמודה אמצעית מתוך 5
         this.rowsMoved = 0;
+        this.score = 0;
         this.grid = new int[GRID_ROWS][GRID_COLS];
         initGrid();
     }
@@ -63,15 +65,19 @@ public class GameManager {
 
         rowsMoved++;
         if (rowsMoved >= 2) {
-            generateNewObstacle();
+            generateNewObstacleOrCoin();
             rowsMoved = 0;
         }
     }
 
-    private void generateNewObstacle() {
+    private void generateNewObstacleOrCoin() {
         Random random = new Random();
         int randomCol = random.nextInt(GRID_COLS);
-        grid[0][randomCol] = OBSTACLES;
+        if (random.nextBoolean()) {
+            grid[0][randomCol] = OBSTACLES;
+        } else {
+            grid[0][randomCol] = COIN;
+        }
     }
 
     public boolean checkCollision() {
@@ -82,6 +88,16 @@ public class GameManager {
             Log.d("GameManager", "No collision at (" + NemoRow + ", " + NemoCol + ")");
         }
         return collision;
+    }
+
+    public boolean collectCoin() {
+        boolean collected = grid[NemoRow][NemoCol] == COIN;
+        if (collected) {
+            grid[NemoRow][NemoCol] = EMPTY;
+            score++; // עולה ב-1 בכל פעם שנוגע במטבע
+            Log.d("GameManager", "Coin collected at (" + NemoRow + ", " + NemoCol + ")");
+        }
+        return collected;
     }
 
     public int getLives() {
@@ -109,5 +125,9 @@ public class GameManager {
     public void reset() {
         lives = 3;
         initGrid();
+    }
+
+    public int getScore() {
+        return score;
     }
 }

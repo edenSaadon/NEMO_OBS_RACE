@@ -2,4 +2,9 @@
     <string name="app_name">NEMO_OBS_RACE</string>
     <string name="left_button">Left Button</string>
     <string name="right_button">right</string>
+    <string name="score_format">Score: %d</string>
+    <string name="title_activity_menu1">MenuActivity1</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="background_image">back_IMG\n</string>
+
 </resources>
