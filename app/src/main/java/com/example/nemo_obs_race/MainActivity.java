@@ -2,6 +2,7 @@ package com.example.nemo_obs_race;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -73,9 +74,19 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == GAME_REQUEST_CODE && resultCode == RESULT_OK) {
             // Get the score from the game activity
             int score = data.getIntExtra("score", 0);
-            String userId = UUID.randomUUID().toString();
-            HighScore highScore = new HighScore(userId, score);
-            highScoresManager.saveHighScore(highScore);
+            String userId = data.getStringExtra("userId");
+            double latitude = data.getDoubleExtra("latitude", 0);
+            double longitude = data.getDoubleExtra("longitude", 0);
+
+            if (userId != null && !userId.isEmpty()) {
+                HighScore highScore = new HighScore(userId, score, latitude, longitude);
+                highScoresManager.saveHighScore(highScore);
+            } else {
+                Log.e("MainActivity", "User ID is null or empty");
+            }
         }
     }
+
 }
+
+

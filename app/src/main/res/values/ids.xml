@@ -47,5 +47,6 @@
     <item name="main_MiddleRight_line" type="id"/>
     <item name="main_MiddleLeft_line" type="id"/>
     <item name="bestScore" type="id"/>
+    <item name="mapFragment" type="id"/>
 
 </resources>

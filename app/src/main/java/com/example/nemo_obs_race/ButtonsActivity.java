@@ -20,6 +20,8 @@ import com.bumptech.glide.Glide;
 import com.example.nemo_obs_race.Logic.GameManager;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.UUID;
+
 public class ButtonsActivity extends AppCompatActivity {
 
     private AppCompatImageView nemo_IMG_background;
@@ -99,7 +101,7 @@ public class ButtonsActivity extends AppCompatActivity {
     }
 
     private void moveRight() {
-        if (gameManager.getNemoCol() < 4) { // עדכון לעמודה האחרונה
+        if (gameManager.getNemoCol() < 4) {
             gameManager.moveNRight();
             updatePlayerPosition();
         }
@@ -243,9 +245,20 @@ public class ButtonsActivity extends AppCompatActivity {
         int finalScore = gameManager.getScore();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("score", finalScore);
+
+        // Add userId, latitude, and longitude
+        String userId = UUID.randomUUID().toString(); // Generate a unique user ID
+        double latitude = 32.0853; // Replace with actual latitude
+        double longitude = 34.7818; // Replace with actual longitude
+        resultIntent.putExtra("userId", userId);
+        resultIntent.putExtra("latitude", latitude);
+        resultIntent.putExtra("longitude", longitude);
+
         setResult(RESULT_OK, resultIntent);
         finish();
     }
+
+
 
     private void showGameOverDialog() {
         new AlertDialog.Builder(this)

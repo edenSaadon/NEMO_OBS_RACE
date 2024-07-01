@@ -33,9 +33,11 @@ public class HighScoresManager {
         Log.d("HighScoresManager", "Saving high score for user " + highScore.getUserId() + ": " + highScore.getScore());
 
         for (HighScore score : highScores) {
-            if (score.getUserId().equals(highScore.getUserId())) {
+            if (score.getUserId() != null && highScore.getUserId() != null && score.getUserId().equals(highScore.getUserId())) {
                 if (highScore.getScore() > score.getScore()) {
                     score.setScore(highScore.getScore());
+                    score.setLatitude(highScore.getLatitude());
+                    score.setLongitude(highScore.getLongitude());
                     Log.d("HighScoresManager", "Updated high score for user " + highScore.getUserId() + ": " + highScore.getScore());
                 }
                 scoreUpdated = true;
@@ -55,8 +57,8 @@ public class HighScoresManager {
             }
         });
 
-        if (highScores.size() > 5) {
-            highScores = highScores.subList(0, 5);
+        if (highScores.size() > 10) {
+            highScores = highScores.subList(0, 10);
         }
 
         for (HighScore score : highScores) {
@@ -68,6 +70,8 @@ public class HighScoresManager {
         editor.putString(HIGH_SCORES_KEY, highScoresJson);
         editor.apply();
     }
+
+
 
     public List<HighScore> getHighScores() {
         String highScoresJson = sharedPreferences.getString(HIGH_SCORES_KEY, null);
