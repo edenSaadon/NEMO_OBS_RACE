@@ -6,5 +6,10 @@
     <string name="title_activity_menu1">MenuActivity1</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="background_image">back_IMG\n</string>
+    <string name="rank">Rank</string>
+    <string name="user_id">User ID</string>
+    <string name="score">Score</string>
+    <string name="best_score">BEST SCORE:</string>
+    <string name="top_5_scores">Top 5 Scores</string>
 
 </resources>

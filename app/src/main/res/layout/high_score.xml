@@ -20,7 +20,7 @@
         android:id="@+id/highScoresTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Top 5 Scores"
+        android:text="@string/top_5_scores"
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
@@ -31,7 +31,7 @@
         android:id="@+id/bestScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BEST SCORE: "
+        android:text="@string/best_score"
     android:textSize="24sp"
     android:textStyle="bold"
     android:layout_below="@id/highScoresTitle"
@@ -58,19 +58,20 @@
             android:stretchColumns="1">
 
             <TableRow
-                android:background="@android:color/darker_gray">
+                android:background="@android:color/darker_gray"
+                tools:ignore="UselessParent">
                 <TextView
-                    android:text="Rank"
+                    android:text="@string/rank"
                     android:textStyle="bold"
                     android:padding="8dp"
                     android:textSize="18sp"/>
                 <TextView
-                    android:text="User ID"
+                    android:text="@string/user_id"
                     android:textStyle="bold"
                     android:padding="8dp"
                     android:textSize="18sp"/>
                 <TextView
-                    android:text="Score"
+                    android:text="@string/score"
                     android:textStyle="bold"
                     android:padding="8dp"
                     android:textSize="18sp"/>
