@@ -16,69 +16,78 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"/>
 
-    <TextView
-        android:id="@+id/highScoresTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/top_10_scores"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:textColor="@android:color/black"/>
+    <RelativeLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
 
-    <TextView
-        android:id="@+id/bestScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/best_score"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_below="@id/highScoresTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:textColor="@android:color/black"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/highScoresCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bestScore"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        android:padding="16dp"
-        android:background="@android:color/white">
-
-        <TableLayout
-            android:id="@+id/highScoresTable"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/highScoresTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:stretchColumns="1">
+            android:text="@string/top_10_scores"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:textColor="@android:color/black"/>
 
-            <TableRow
-                android:background="@android:color/darker_gray"
-                tools:ignore="UselessParent">
-                <TextView
-                    android:text="@string/rank"
-                    android:textStyle="bold"
-                    android:padding="8dp"
-                    android:textSize="18sp"/>
-                <TextView
-                    android:text="@string/user_id"
-                    android:textStyle="bold"
-                    android:padding="8dp"
-                    android:textSize="18sp"/>
-                <TextView
-                    android:text="@string/score"
-                    android:textStyle="bold"
-                    android:padding="8dp"
-                    android:textSize="18sp"/>
-            </TableRow>
+        <TextView
+            android:id="@+id/bestScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/best_score"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_below="@id/highScoresTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"/>
 
-        </TableLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/highScoresCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bestScore"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:padding="16dp"
+            android:background="@android:color/white"
+            android:alpha="0.8">
 
-    </androidx.cardview.widget.CardView>
+            <TableLayout
+                android:id="@+id/highScoresTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:background="@android:color/transparent">
+
+                <TableRow
+                    android:background="@android:color/darker_gray"
+                    tools:ignore="UselessParent">
+                    <TextView
+                        android:text="@string/rank"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:text="@string/user_id"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:text="@string/score"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textSize="18sp"/>
+                </TableRow>
+
+            </TableLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
 </RelativeLayout>

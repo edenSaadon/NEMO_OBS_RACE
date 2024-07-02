@@ -14,6 +14,8 @@ public class MapFragment extends Fragment {
 
     private CustomMapView customMapView;
     private TextView odometerTextView;
+    private double currentLatitude;
+    private double currentLongitude;
 
     @Nullable
     @Override
@@ -23,13 +25,18 @@ public class MapFragment extends Fragment {
         customMapView = view.findViewById(R.id.customMapView);
         odometerTextView = view.findViewById(R.id.odometer);
 
-        // Initialize CustomMapView and odometer here
-
         return view;
     }
 
     public void updateLocation(double latitude, double longitude) {
         customMapView.updateLocation(latitude, longitude);
-        // Update the odometer value here
+        this.currentLatitude = latitude;
+        this.currentLongitude = longitude;
+    }
+
+    public void updateOdometer(double latitude, double longitude, double distance) {
+        this.currentLatitude = latitude;
+        this.currentLongitude = longitude;
+        odometerTextView.setText(String.format("Distance: %.2f km", distance));
     }
 }

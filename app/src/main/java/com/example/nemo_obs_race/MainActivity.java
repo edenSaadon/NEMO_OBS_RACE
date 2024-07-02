@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViews();
         initViews();
-        loadImageBackground();
+       loadImageBackground();
 
         highScoresManager = new HighScoresManager(this);
     }
@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadImageBackground() {
         Glide.with(this)
-                .load(R.drawable.nemo_menu) // Replace with your actual image resource
+                .load(R.drawable.nemo_background) // Replace with your actual image resource
+                .centerCrop() // or .centerCrop() based on your requirement
                 .into(backgroundImage);
     }
 
@@ -77,16 +78,20 @@ public class MainActivity extends AppCompatActivity {
             String userId = data.getStringExtra("userId");
             double latitude = data.getDoubleExtra("latitude", 0);
             double longitude = data.getDoubleExtra("longitude", 0);
+            double distance = data.getDoubleExtra("distance", 0); // Get the distance
 
             if (userId != null && !userId.isEmpty()) {
-                HighScore highScore = new HighScore(userId, score, latitude, longitude);
+                HighScore highScore = new HighScore(userId, score, latitude, longitude, distance); // Add distance to HighScore
                 highScoresManager.saveHighScore(highScore);
+
+                // Update the odometer in the map fragment
+                MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerMap);
+                if (mapFragment != null) {
+                    mapFragment.updateOdometer(latitude, longitude, distance);
+                }
             } else {
                 Log.e("MainActivity", "User ID is null or empty");
             }
         }
     }
-
 }
-
-

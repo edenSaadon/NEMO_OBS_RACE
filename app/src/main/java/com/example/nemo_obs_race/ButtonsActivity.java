@@ -243,8 +243,10 @@ public class ButtonsActivity extends AppCompatActivity {
 
         // Get the final score and return it to MainActivity
         int finalScore = gameManager.getScore();
+        double distance = gameManager.getDistance(); // Get the distance from GameManager
         Intent resultIntent = new Intent();
         resultIntent.putExtra("score", finalScore);
+        resultIntent.putExtra("distance", distance);
 
         // Add userId, latitude, and longitude
         String userId = UUID.randomUUID().toString(); // Generate a unique user ID
@@ -257,8 +259,6 @@ public class ButtonsActivity extends AppCompatActivity {
         setResult(RESULT_OK, resultIntent);
         finish();
     }
-
-
 
     private void showGameOverDialog() {
         new AlertDialog.Builder(this)

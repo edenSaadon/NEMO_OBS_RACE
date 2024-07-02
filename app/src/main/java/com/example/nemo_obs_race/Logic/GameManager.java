@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class GameManager {
     public static final int GRID_ROWS = 10;
-    public static final int GRID_COLS = 5; // עדכון ל-5 עמודות
+    public static final int GRID_COLS = 5;
     public static final int EMPTY = 0;
     public static final int NEMO = 1;
     public static final int OBSTACLES = 2;
@@ -18,13 +18,15 @@ public class GameManager {
     private int NemoCol;
     private int lives;
     private int rowsMoved;
+    private double distance;
 
     public GameManager(int lives) {
         this.lives = lives;
         this.NemoRow = GRID_ROWS - 1;
-        this.NemoCol = 2; // עמודה אמצעית מתוך 5
+        this.NemoCol = 2;
         this.rowsMoved = 0;
         this.score = 0;
+        this.distance = 0;
         this.grid = new int[GRID_ROWS][GRID_COLS];
         initGrid();
     }
@@ -68,6 +70,7 @@ public class GameManager {
             generateNewObstacleOrCoin();
             rowsMoved = 0;
         }
+        distance += 0.01; // update distance in kilometers
     }
 
     private void generateNewObstacleOrCoin() {
@@ -94,7 +97,7 @@ public class GameManager {
         boolean collected = grid[NemoRow][NemoCol] == COIN;
         if (collected) {
             grid[NemoRow][NemoCol] = EMPTY;
-            score++; // עולה ב-1 בכל פעם שנוגע במטבע
+            score++;
             Log.d("GameManager", "Coin collected at (" + NemoRow + ", " + NemoCol + ")");
         }
         return collected;
@@ -129,5 +132,9 @@ public class GameManager {
 
     public int getScore() {
         return score;
+    }
+
+    public double getDistance() {
+        return distance;
     }
 }

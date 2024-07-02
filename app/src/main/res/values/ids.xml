@@ -48,5 +48,6 @@
     <item name="main_MiddleLeft_line" type="id"/>
     <item name="bestScore" type="id"/>
     <item name="mapFragment" type="id"/>
+    <item name="overlay" type="id"/>
 
 </resources>

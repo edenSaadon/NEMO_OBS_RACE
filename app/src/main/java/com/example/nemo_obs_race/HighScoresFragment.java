@@ -79,6 +79,7 @@ public class HighScoresFragment extends Fragment {
                 MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.fragmentContainerMap);
                 if (mapFragment != null) {
                     mapFragment.updateLocation(highScore.getLatitude(), highScore.getLongitude());
+                    mapFragment.updateOdometer(highScore.getLatitude(), highScore.getLongitude(), highScore.getDistance());
                 }
             });
 

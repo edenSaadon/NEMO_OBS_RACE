@@ -23,6 +23,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.bumptech.glide.Glide;
 import com.example.nemo_obs_race.Logic.GameManager;
 
+import java.util.UUID;
+
 public class SensorActivity extends AppCompatActivity implements SensorEventListener {
 
     private AppCompatImageView nemo_IMG_background;
@@ -120,7 +122,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     }
 
     private void moveRight() {
-        if (gameManager.getNemoCol() < 4) { // עדכון לעמודה האחרונה
+        if (gameManager.getNemoCol() < 4) {
             gameManager.moveNRight();
             updatePlayerPosition();
         }
@@ -262,8 +264,19 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
 
         // Get the final score and return it to MainActivity
         int finalScore = gameManager.getScore();
+        double distance = gameManager.getDistance(); // Get the distance from GameManager
         Intent resultIntent = new Intent();
         resultIntent.putExtra("score", finalScore);
+        resultIntent.putExtra("distance", distance);
+
+        // Add userId, latitude, and longitude
+        String userId = UUID.randomUUID().toString(); // Generate a unique user ID
+        double latitude = 32.0853; // Replace with actual latitude
+        double longitude = 34.7818; // Replace with actual longitude
+        resultIntent.putExtra("userId", userId);
+        resultIntent.putExtra("latitude", latitude);
+        resultIntent.putExtra("longitude", longitude);
+
         setResult(RESULT_OK, resultIntent);
         finish();
     }

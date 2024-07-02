@@ -5,15 +5,14 @@ public class HighScore {
     private int score;
     private double latitude;
     private double longitude;
+    private double distance; // Add distance field
 
-    public HighScore(String userId, int score, double latitude, double longitude) {
+    public HighScore(String userId, int score, double latitude, double longitude, double distance) {
         this.userId = userId;
         this.score = score;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public HighScore(String userId, int score) {
+        this.distance = distance; // Initialize distance
     }
 
     public String getUserId() {
@@ -32,6 +31,10 @@ public class HighScore {
         return longitude;
     }
 
+    public double getDistance() {
+        return distance;
+    }
+
     public void setUserId(String userId) {
         this.userId = userId;
     }
@@ -46,5 +49,9 @@ public class HighScore {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }
