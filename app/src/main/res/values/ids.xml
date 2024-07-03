@@ -51,5 +51,7 @@
     <item name="overlay" type="id"/>
     <item name="title_text" type="id"/>
     <item name="background_image" type="id"/>
+    <item name="odometer_text" type="id"/>
+    <item name="underScoreImage" type="id"/>
 
 </resources>

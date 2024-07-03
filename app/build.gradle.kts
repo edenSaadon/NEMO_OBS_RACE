@@ -70,6 +70,13 @@ dependencies {
     debugImplementation(libs.ui.test.manifest)
     implementation (libs.gson)
 
+    implementation (libs.play.services.maps.v1802)
+    implementation (libs.play.services.location)
+    dependencies {
+        // Other dependencies
+        implementation (libs.osmdroid.android)
+        implementation (libs.osmdroid.wms)
+    }
 
 
 }

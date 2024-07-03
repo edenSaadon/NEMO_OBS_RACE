@@ -14,7 +14,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/nemo_scorefinal"/>
 
     <RelativeLayout
         android:id="@+id/overlay"
@@ -26,8 +27,8 @@
             android:id="@+id/highScoresTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/top_10_scores"
-            android:textSize="30sp"
+            android:text="Top 10 Scores"
+            android:textSize="45sp"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
@@ -37,8 +38,8 @@
             android:id="@+id/bestScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/best_score"
-            android:textSize="24sp"
+            android:text="Best Score: 0"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_below="@id/highScoresTitle"
             android:layout_centerHorizontal="true"
@@ -47,15 +48,17 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/highScoresCard"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/bestScore"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
             android:padding="16dp"
-            android:background="@android:color/white"
+            android:background="@android:color/transparent"
             android:alpha="0.8">
 
             <TableLayout
@@ -63,31 +66,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stretchColumns="1"
-                android:background="@android:color/transparent">
-
-                <TableRow
-                    android:background="@android:color/darker_gray"
-                    tools:ignore="UselessParent">
-                    <TextView
-                        android:text="@string/rank"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textSize="18sp"/>
-                    <TextView
-                        android:text="@string/user_id"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textSize="18sp"/>
-                    <TextView
-                        android:text="@string/score"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textSize="18sp"/>
-                </TableRow>
-
+                android:background="@android:color/transparent"
+                android:shrinkColumns="*"
+                android:collapseColumns="*"
+                android:padding="4dp"> <!-- הוספת padding כדי להקטין את המרווחים -->
             </TableLayout>
-
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
-
 </RelativeLayout>

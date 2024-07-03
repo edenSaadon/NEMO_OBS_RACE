@@ -71,8 +71,6 @@ public class HighScoresManager {
         editor.apply();
     }
 
-
-
     public List<HighScore> getHighScores() {
         String highScoresJson = sharedPreferences.getString(HIGH_SCORES_KEY, null);
         if (highScoresJson == null) {

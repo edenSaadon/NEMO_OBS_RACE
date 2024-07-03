@@ -12,6 +12,7 @@
     <string name="best_score">BEST SCORE:</string>
     <string name="top_5_scores">Top 5 Scores</string>
     <string name="top_10_scores">top_10_scores\n</string>
+    <string name="under_score_image">under_score_image\n</string>
 
 
 </resources>

@@ -32,6 +32,7 @@ public class ButtonsActivity extends AppCompatActivity {
     private Vibrator vibrator;
     private MediaPlayer crashSound;
     private TextView score_text;
+    private TextView odometer_text;
     private final AppCompatImageView[] main_IMG_hearts = new AppCompatImageView[3];
     private AppCompatImageView player_left;
     private AppCompatImageView player_middle_left;
@@ -76,6 +77,7 @@ public class ButtonsActivity extends AppCompatActivity {
         player_middle_right = findViewById(R.id.player_middle_right);
         player_right = findViewById(R.id.player_right);
         score_text = findViewById(R.id.score_text);
+        odometer_text = findViewById(R.id.odometer_text); // Find the odometer view
 
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE); // Initialize the vibrator
     }
@@ -212,6 +214,10 @@ public class ButtonsActivity extends AppCompatActivity {
         // Update score text view
         int score = gameManager.getScore();
         score_text.setText(getString(R.string.score_format, score));
+
+        // Update odometer text view
+        double distance = gameManager.getDistance();
+        odometer_text.setText(String.format("Distance: %.2f km", distance));
     }
 
     private void updateHearts() {
@@ -279,17 +285,5 @@ public class ButtonsActivity extends AppCompatActivity {
             crashSound.release();
             crashSound = null;
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        handler.removeCallbacks(runnable); // Stop the game loop
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        handler.removeCallbacks(runnable); // Stop the game loop
     }
 }
