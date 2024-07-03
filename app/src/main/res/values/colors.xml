@@ -3,6 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#C3BEBE</color>
     <color name="red">#FFCA1212</color>
-    <color name="blue">#FF28ACE7</color>
+    <color name="blue">#FF0652D5</color>
+        <color name="light_blue">#81D4FA</color>
+
+    <color name="score_background_color">#80000000</color> <!-- Semi-transparent black -->
+
+
 
 </resources>

@@ -280,4 +280,16 @@ public class ButtonsActivity extends AppCompatActivity {
             crashSound = null;
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable); // Stop the game loop
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        handler.removeCallbacks(runnable); // Stop the game loop
+    }
 }

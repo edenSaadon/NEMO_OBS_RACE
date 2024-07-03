@@ -144,11 +144,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:text="@string/score_format"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold"
+        android:background="@drawable/score_background"
+        android:padding="8dp"
         tools:ignore="RelativeOverlap" />
 
 </RelativeLayout>

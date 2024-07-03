@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadImageBackground() {
         Glide.with(this)
-                .load(R.drawable.nemo_background) // Replace with your actual image resource
+                .load(R.drawable.nemo_back) // Replace with your actual image resource
                 .centerCrop() // or .centerCrop() based on your requirement
                 .into(backgroundImage);
     }

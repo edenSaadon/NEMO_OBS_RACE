@@ -43,6 +43,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     private Runnable runnable;
     private SensorManager sensorManager;
     private Sensor accelerometer;
+    private long timestamp = 0l;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +102,13 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float x = event.values[0];
-            if (x < -2) { // Tilt right
-                moveRight();
-            } else if (x > 2) { // Tilt left
-                moveLeft();
+            if (System.currentTimeMillis() - timestamp > 500) {
+                timestamp = System.currentTimeMillis();
+                if (x < -6.0) { // Tilt right
+                    moveRight();
+                } else if (x > 6.0) { // Tilt left
+                    moveLeft();
+                }
             }
         }
     }
@@ -303,5 +307,17 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
             crashSound.release();
             crashSound = null;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable); // Stop the game loop
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        handler.removeCallbacks(runnable); // Stop the game loop
     }
 }

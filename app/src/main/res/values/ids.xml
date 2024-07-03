@@ -49,5 +49,7 @@
     <item name="bestScore" type="id"/>
     <item name="mapFragment" type="id"/>
     <item name="overlay" type="id"/>
+    <item name="title_text" type="id"/>
+    <item name="background_image" type="id"/>
 
 </resources>

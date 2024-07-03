@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        android:src="@drawable/nemo_back"
         android:contentDescription="@string/background_image"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"/>
-
 
     <!-- Title TextView -->
     <TextView
@@ -23,18 +23,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NEMO RACE"
-        android:textColor="@android:color/black"
-        android:textSize="32sp"
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"/>
 
     <!-- Center Box for Options -->
     <LinearLayout
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@android:color/white"
+        android:background="@drawable/rounded_corner_background"
         android:padding="20dp"
         android:layout_below="@id/title_text"
         android:layout_marginTop="20dp"
@@ -90,7 +94,7 @@
             android:text="Start"
             android:textSize="20sp"
             android:textColor="@android:color/white"
-            android:background="@android:color/holo_blue_light"
+            android:background="@drawable/rounded_button_background"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
