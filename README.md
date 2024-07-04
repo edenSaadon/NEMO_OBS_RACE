@@ -24,18 +24,18 @@ The Nemo Obstacle Race Game is a fun and engaging mobile game where the player c
 
 ## Screenshots
 ### App Icon
-![Screenshot_20240703_212401ICON](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/27013bac-0d0d-4d4f-b696-34f8b6f3ebaf)
+![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/23927117-f7bb-4b81-9414-8b653bc753b4)
 ### Home Screen
-![Screenshot_20240703_212432Open](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/b8295e6c-4a9d-4990-9db1-1ae52a643f87)
+![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/999b4cce-c81b-4403-8d1a-9181202abe24)
 
 ### Game with Buttons
-![Screenshot_20240703_212514BTN](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/50e63fc7-11d1-44b8-9757-12eecddc6717)
+![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/01bdc9fa-7b0c-4863-9ec6-b8b7a8a8fbe2)
 
 ### High Scores Screen
-![Screenshot_20240703_212549Score](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/ba60a799-74a6-4e19-befa-efb826201dd4)
+![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/90b8e6db-a96f-4066-9f01-93bfeb260b8f)
 
 ### Game with Sensors
-![Screenshot_20240703_212636Sn](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/c552e3c7-4fc3-4275-a298-941ed42fe747)
+![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/4391d454-2141-4b85-baf4-dbd0088feff0)
 
 ## Code Structure
 - **MainActivity.java**: The main activity managing the menu and navigation.
