@@ -31,11 +31,13 @@ The Nemo Obstacle Race Game is a fun and engaging mobile game where the player c
 ### Game with Buttons
 ![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/01bdc9fa-7b0c-4863-9ec6-b8b7a8a8fbe2)
 
+### Game with Sensors
+![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/4391d454-2141-4b85-baf4-dbd0088feff0)
+
 ### High Scores Screen
 ![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/90b8e6db-a96f-4066-9f01-93bfeb260b8f)
 
-### Game with Sensors
-![image](https://github.com/edenSaadon/NEMO_OBS_RACE/assets/97795061/4391d454-2141-4b85-baf4-dbd0088feff0)
+
 
 ## Code Structure
 - **MainActivity.java**: The main activity managing the menu and navigation.
