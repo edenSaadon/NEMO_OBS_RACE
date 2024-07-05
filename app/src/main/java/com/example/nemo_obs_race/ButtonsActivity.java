@@ -1,5 +1,6 @@
 package com.example.nemo_obs_race;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -171,6 +172,7 @@ public class ButtonsActivity extends AppCompatActivity {
         coinSound.start();
     }
 
+    @SuppressLint("DefaultLocale")
     private void updateUI() {
         int[][] grid = gameManager.getGrid();
         for (FrameLayout lane : lanes) {

@@ -1,5 +1,6 @@
 package com.example.nemo_obs_race.Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ public class HighScoresFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnScoreClickListener) {
             onScoreClickListener = (OnScoreClickListener) context;
@@ -52,6 +53,7 @@ public class HighScoresFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     private void loadHighScores() {
         List<HighScore> highScores = highScoresManager.getHighScores();
         highScoresTable.removeAllViews();

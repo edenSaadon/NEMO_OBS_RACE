@@ -18,8 +18,8 @@ public class HighScoresManager {
 
     private static final String SP_FILE = "high_scores_sp";
     private static final String HIGH_SCORES_KEY = "high_scores";
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
+    private final SharedPreferences sharedPreferences;
+    private final Gson gson;
 
     public HighScoresManager(Context context) {
         this.sharedPreferences = context.getSharedPreferences(SP_FILE, Context.MODE_PRIVATE);
