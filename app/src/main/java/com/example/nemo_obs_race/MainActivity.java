@@ -6,10 +6,13 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.example.nemo_obs_race.Logic.HighScoresManager;
 import com.example.nemo_obs_race.Models.HighScore;
+import com.example.nemo_obs_race.Models.SoundPlayer;
 
 import java.util.UUID;
 
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button confirmButton;
     private ImageView backgroundImage;
     private HighScoresManager highScoresManager;
+    private SoundPlayer soundPlayer;
     private static final int GAME_REQUEST_CODE = 1; // Request code for game activities
 
     @Override
@@ -66,6 +70,19 @@ public class MainActivity extends AppCompatActivity {
                 .load(R.drawable.nemo_backfinal) // Replace with your actual image resource
                 .centerCrop() // or .centerCrop() based on your requirement
                 .into(backgroundImage);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        soundPlayer = new SoundPlayer(this);
+        soundPlayer.playSound(R.raw.background_music); // Background music file
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        soundPlayer.stopSound();
     }
 
     @Override

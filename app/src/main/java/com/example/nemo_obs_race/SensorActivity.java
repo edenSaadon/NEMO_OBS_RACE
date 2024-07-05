@@ -32,6 +32,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     private GameManager gameManager;
     private Vibrator vibrator;
     private MediaPlayer crashSound;
+    private MediaPlayer coinSound; // Add coin sound MediaPlayer
     private TextView score_text;
     private TextView odometer_text;
     private final AppCompatImageView[] main_IMG_hearts = new AppCompatImageView[3];
@@ -56,6 +57,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
 
         gameManager = new GameManager(3); // Initialize gameManager with 3 lives
         crashSound = MediaPlayer.create(this, R.raw.crash); // Initialize crash sound
+        coinSound = MediaPlayer.create(this, R.raw.coin); // Initialize coin sound
 
         setupSensors();
         startGame();
@@ -192,7 +194,11 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     }
 
     private void playCoinSound() {
-        MediaPlayer coinSound = MediaPlayer.create(getApplicationContext(), R.raw.coin);
+        if (coinSound.isPlaying()) {
+            coinSound.stop();
+            coinSound.release();
+            coinSound = MediaPlayer.create(this, R.raw.coin);
+        }
         coinSound.start();
     }
 
@@ -259,9 +265,12 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     }
 
     private void playCrashSound() {
-        if (crashSound != null) {
-            crashSound.start();
+        if (crashSound.isPlaying()) {
+            crashSound.stop();
+            crashSound.release();
+            crashSound = MediaPlayer.create(this, R.raw.crash);
         }
+        crashSound.start();
     }
 
     private void showToastMessage() {
@@ -312,6 +321,10 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         if (crashSound != null) {
             crashSound.release();
             crashSound = null;
+        }
+        if (coinSound != null) {
+            coinSound.release();
+            coinSound = null;
         }
     }
 }
