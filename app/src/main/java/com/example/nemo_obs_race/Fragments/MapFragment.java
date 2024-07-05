@@ -1,4 +1,4 @@
-package com.example.nemo_obs_race;
+package com.example.nemo_obs_race.Fragments;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import com.example.nemo_obs_race.R;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;

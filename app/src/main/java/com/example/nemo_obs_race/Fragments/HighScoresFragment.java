@@ -1,4 +1,4 @@
-package com.example.nemo_obs_race;
+package com.example.nemo_obs_race.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.nemo_obs_race.Logic.HighScoresManager;
 import com.example.nemo_obs_race.Models.HighScore;
+import com.example.nemo_obs_race.R;
 
 import java.util.List;
 
