@@ -22,6 +22,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.nemo_obs_race.Logic.GameManager;
+import com.example.nemo_obs_race.Models.SoundPlayer;
 
 import java.util.UUID;
 
@@ -32,6 +33,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     private GameManager gameManager;
     private Vibrator vibrator;
     private MediaPlayer crashSound;
+    private SoundPlayer soundPlayer;
     private MediaPlayer coinSound; // Add coin sound MediaPlayer
     private TextView score_text;
     private TextView odometer_text;
@@ -58,6 +60,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         gameManager = new GameManager(3); // Initialize gameManager with 3 lives
         crashSound = MediaPlayer.create(this, R.raw.crash); // Initialize crash sound
         coinSound = MediaPlayer.create(this, R.raw.coin); // Initialize coin sound
+        soundPlayer = new SoundPlayer(this); // Initialize sound player
 
         setupSensors();
         startGame();
@@ -106,11 +109,11 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float x = event.values[0];
-            if (System.currentTimeMillis() - timestamp > 500) {
+            if (System.currentTimeMillis() - timestamp > 300) {
                 timestamp = System.currentTimeMillis();
-                if (x < -6.0) { // Tilt right
+                if (x < -4.0) { // Tilt right (less sensitive)
                     moveRight();
-                } else if (x > 6.0) { // Tilt left
+                } else if (x > 4.0) { // Tilt left (less sensitive)
                     moveLeft();
                 }
             }
@@ -310,6 +313,18 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
                 })
                 .setCancelable(false)
                 .show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        soundPlayer.playSound(R.raw.background_music);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        soundPlayer.stopSound();
     }
 
     @Override

@@ -65,8 +65,8 @@
             app:cornerRadius="35dp"
             android:gravity="center"
             app:icon="@drawable/left_btn"
-            app:iconGravity="top"
-            app:iconSize="42dp"/>
+        app:iconGravity="top"
+        app:iconSize="42dp"/>
 
         <View
             android:layout_width="140dp"
@@ -82,8 +82,8 @@
             app:cornerRadius="35dp"
             android:gravity="center"
             app:icon="@drawable/right_btn"
-            app:iconGravity="top"
-            app:iconSize="42dp"/>
+        app:iconGravity="top"
+        app:iconSize="42dp"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <LinearLayout

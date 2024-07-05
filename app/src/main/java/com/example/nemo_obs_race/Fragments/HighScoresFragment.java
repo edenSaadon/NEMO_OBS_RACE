@@ -2,6 +2,7 @@ package com.example.nemo_obs_race.Fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,14 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.nemo_obs_race.Logic.HighScoresManager;
+import com.example.nemo_obs_race.MainActivity;
 import com.example.nemo_obs_race.Models.HighScore;
 import com.example.nemo_obs_race.R;
 
@@ -49,6 +52,13 @@ public class HighScoresFragment extends Fragment {
         highScoresTable = view.findViewById(R.id.highScoresTable);
         bestScoreTextView = view.findViewById(R.id.bestScore);
         highScoresManager = new HighScoresManager(getContext());
+        Button backButton = view.findViewById(R.id.backButton); // Find the back button
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            getActivity().finish();
+        });
         loadHighScores();
         return view;
     }

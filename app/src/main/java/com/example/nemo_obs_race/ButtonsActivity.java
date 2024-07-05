@@ -19,6 +19,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.nemo_obs_race.Logic.GameManager;
+import com.example.nemo_obs_race.Models.SoundPlayer;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class ButtonsActivity extends AppCompatActivity {
     private GameManager gameManager;
     private Vibrator vibrator;
     private MediaPlayer crashSound;
-    private MediaPlayer coinSound; // Add coin sound MediaPlayer
+    private SoundPlayer soundPlayer;
     private TextView score_text;
     private TextView odometer_text;
     private final AppCompatImageView[] main_IMG_hearts = new AppCompatImageView[3];
@@ -54,7 +55,7 @@ public class ButtonsActivity extends AppCompatActivity {
 
         gameManager = new GameManager(3); // Initialize gameManager with 3 lives
         crashSound = MediaPlayer.create(this, R.raw.crash); // Initialize crash sound
-        coinSound = MediaPlayer.create(this, R.raw.coin); // Initialize coin sound
+        soundPlayer = new SoundPlayer(this); // Initialize sound player
 
         setupButtons();
         startGame();
@@ -170,11 +171,7 @@ public class ButtonsActivity extends AppCompatActivity {
     }
 
     private void playCoinSound() {
-        if (coinSound.isPlaying()) {
-            coinSound.stop();
-            coinSound.release();
-            coinSound = MediaPlayer.create(this, R.raw.coin);
-        }
+        MediaPlayer coinSound = MediaPlayer.create(getApplicationContext(), R.raw.coin);
         coinSound.start();
     }
 
@@ -242,12 +239,9 @@ public class ButtonsActivity extends AppCompatActivity {
     }
 
     private void playCrashSound() {
-        if (crashSound.isPlaying()) {
-            crashSound.stop();
-            crashSound.release();
-            crashSound = MediaPlayer.create(this, R.raw.crash);
+        if (crashSound != null) {
+            crashSound.start();
         }
-        crashSound.start();
     }
 
     private void showToastMessage() {
@@ -290,15 +284,23 @@ public class ButtonsActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        soundPlayer.playSound(R.raw.background_music);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        soundPlayer.stopSound();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (crashSound != null) {
             crashSound.release();
             crashSound = null;
-        }
-        if (coinSound != null) {
-            coinSound.release();
-            coinSound = null;
         }
     }
 }
