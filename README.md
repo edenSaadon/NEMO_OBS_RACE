@@ -3,6 +3,9 @@
 ## Overview
 The Nemo Obstacle Race Game is a fun and engaging mobile game where the player controls Nemo, navigating through a series of obstacles (sharks) to avoid collisions. The game features a three-lane road setup, and Nemo can move left or right to avoid the obstacles. The player has three lives, and the game continues endlessly until all lives are lost.
 
+## Demo
+Watch the demo of the app here: [Link](https://drive.google.com/file/d/1_LzTEF1j3DdKnTuybK2aGVpDXrcalZKD/view?usp=sharing)
+
 ## Features
 - App icon featuring Nemo
 - Five-lane road with extended length
